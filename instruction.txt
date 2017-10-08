@@ -1,0 +1,54 @@
+1. download Anaconda3-5.0.0.1-Linux-x86_64.sh from https://repo.continuum.io/archive/
+
+2. install anaconda3
+
+liurui@ubuntu:~/tf_install$ cd ..
+liurui@ubuntu:~$ ls Downloads
+Anaconda3-5.0.0.1-Linux-x86_64.sh
+liurui@ubuntu:~$ cd Downloads
+liurui@ubuntu:~/Downloads$ bash Anaconda3-5.0.0.1-Linux-x86_64.sh
+
+3. change environment path
+
+liurui@ubuntu:~/Downloads$ cd ..
+liurui@ubuntu:~$ python --version
+Python 2.7.12
+liurui@ubuntu:~$ export PATH=/home/liurui/anaconda3/bin:$PATH
+liurui@ubuntu:~$ python --version
+Python 3.6.2 :: Anaconda, Inc.
+
+4. install with Anaconda by following https://www.tensorflow.org/install/install_linux#installingAnaconda
+
+liurui@ubuntu:~$ conda create -n tensorflow
+Fetching package metadata ...........
+Solving package specifications: 
+Package plan for installation in environment /home/liurui/anaconda3/envs/tensorflow:
+
+Proceed ([y]/n)? y
+
+#
+# To activate this environment, use:
+# > source activate tensorflow
+#
+# To deactivate an active environment, use:
+# > source deactivate
+#
+
+liurui@ubuntu:~$ source activate tensorflow
+(tensorflow) liurui@ubuntu:~$ pip install tensorflow
+(tensorflow) liurui@ubuntu:~$ python
+Python 3.6.2 |Anaconda, Inc.| (default, Sep 30 2017, 18:42:57) 
+[GCC 7.2.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import tensorflow as tf
+>>> hello = tf.constant('Hello,Tensorflow')
+>>> sess = tf.Session()
+2017-10-07 21:12:55.697335: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.
+2017-10-07 21:12:55.697451: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.
+2017-10-07 21:12:55.697495: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.
+>>> print(sess.run(hello))
+b'Hello,Tensorflow'
+>>> quit()
+(tensorflow) liurui@ubuntu:~$ source deactivate
+liurui@ubuntu:~$ 
+
